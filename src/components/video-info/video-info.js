@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Odometer from 'odometer';
 import './video-info.css';
 
 function formatNumber(num) {
@@ -16,13 +17,17 @@ const VideoInfo = ({ videoId, title, author, viewCount }) => {
       </h1>
       <h2>{author || 'Author'}</h2>
       <div className="view-count-title">View Count</div>
-      <div className="view-count">{formatNumber(viewCount) || 0}</div>
+      <div className="counter-wrapper">
+        <div id="odometer" className="odometer">
+          {viewCount}
+        </div>
+      </div>
     </div>
   );
 };
 
 VideoInfo.propTypes = {
-  videoId: PropTypes.number.isRequired,
+  videoId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   viewCount: PropTypes.number.isRequired

@@ -3,17 +3,18 @@
 }
 
 .view-count-title {
-  padding: 0.1em 0;
+  padding-top: 0.1em;
   font-size: 2em;
   text-align: center;
 }
 
-.view-count {
-  padding: 0.3em 0;
-  color: red;
-  font-size: 5em;
+.counter-wrapper {
   text-align: center;
-  font-weight: 700;
+  margin: 1.4em 0;
+}
+
+.odometer {
+  font-size: 3em;
 }
 
 h1 {
@@ -31,13 +32,13 @@ h1 a {
 }
 
 @media only screen and (max-width: 600px) {
-  .view-count {
-    font-size: 4em;
+  .odometer {
+    font-size: 2em;
   }
 }
 
 @media only screen and (max-width: 400px) {
-  .view-count {
-    font-size: 3em;
+  .odometer {
+    font-size: 1.7em;
   }
 }
