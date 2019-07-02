@@ -45,13 +45,17 @@ const Thumbnail = ({ videoId, title, size }) => {
   // const { w, h } = getImageSize(size);
   const imgUrl = getImageUrl(videoId, size);
 
+  const url = 'https://www.youtube.com/watch?v=' + videoId;
+
   return (
     <div className="video-thumbnail">
-      <img
-        src={imgUrl}
-        alt={title}
-        style={{ height: 'auto', maxWidth: '100%' }}
-      />
+      <a href={url}>
+        <img
+          src={imgUrl}
+          alt={title}
+          style={{ height: 'auto', maxWidth: '100%' }}
+        />
+      </a>
     </div>
   );
 };

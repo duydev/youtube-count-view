@@ -65,6 +65,7 @@ class DefaultLayout extends React.Component {
             </Grid>
             <Grid item md={6}>
               <VideoInfo
+                videoId={this.state.videoId}
                 title={this.state.title}
                 author={this.state.author}
                 viewCount={this.state.viewCount}
