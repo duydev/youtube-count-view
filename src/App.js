@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from 'react';
+import { Helmet } from 'react-helmet';
+import { DefaultLayout } from './components/default-layout';
 
-function App() {
+export const App = props => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+    <Fragment>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Youtube View Count</title>
+      </Helmet>
+      <DefaultLayout />
+      <div className="footer" style={{ textAlign: 'center', padding: '1em' }}>
+        &copy; {new Date().getFullYear()} - Make with{' '}
+        <span style={{ color: 'red', fontWeight: 700 }}>♥</span> by{' '}
+        <a style={{ textDecoration: 'none' }} href="https://duydev.me">
+          Trần Nhật Duy
         </a>
-      </header>
-    </div>
+      </div>
+    </Fragment>
   );
-}
-
-export default App;
+};
