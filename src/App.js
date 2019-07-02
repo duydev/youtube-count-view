@@ -7,7 +7,7 @@ export const App = props => {
     <Fragment>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Youtube View Count</title>
+        <title>Youtube View Count - Tran Nhat Duy (hi@duydev.me)</title>
       </Helmet>
       <DefaultLayout />
       <div className="footer" style={{ textAlign: 'center', padding: '1em' }}>

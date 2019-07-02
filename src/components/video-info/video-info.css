@@ -18,3 +18,15 @@ h1 {
 h2 {
   font-size: 20px;
 }
+
+@media only screen and (max-width: 600px) {
+  .view-count {
+    font-size: 4em;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .view-count {
+    font-size: 3em;
+  }
+}
