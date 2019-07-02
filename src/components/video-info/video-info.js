@@ -11,6 +11,7 @@ const VideoInfo = ({ title, author, viewCount }) => {
     <div className="video-info">
       <h1>{title || 'Video Title'}</h1>
       <h2>{author || 'Author'}</h2>
+      <div className="view-count-title">View Count</div>
       <div className="view-count">{formatNumber(viewCount) || 0}</div>
     </div>
   );

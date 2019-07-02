@@ -2,6 +2,12 @@
   margin: 0 1.3em;
 }
 
+.view-count-title {
+  padding: 0.1em 0;
+  font-size: 2em;
+  text-align: center;
+}
+
 .view-count {
   padding: 0.3em 0;
   color: red;
