@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_KEY = 'AIzaSyB0KJRj_fhDty9FvfFpYIFIdbL00S7qFxM';
+const API_KEY = 'AIzaSyAu5kEu3rb1cCgM6Iqlbamt6D_DNrIex_8';
 
 const API_URL = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2C+statistics&key=${API_KEY}&id=`;
 
