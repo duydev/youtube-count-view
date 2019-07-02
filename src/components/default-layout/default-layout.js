@@ -51,7 +51,7 @@ class DefaultLayout extends React.Component {
 
     this.intervalId = setInterval(() => {
       this.fetchMetric();
-    }, 1000);
+    }, 2000);
   }
 
   componentWillUnmount() {

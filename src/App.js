@@ -7,7 +7,7 @@ export const App = props => {
     <Fragment>
       <DefaultLayout />
       <div className="footer" style={{ textAlign: 'center', padding: '1em' }}>
-        &copy; {new Date().getFullYear()} - Make with{' '}
+        &copy; {new Date().getFullYear()} - Made with{' '}
         <span style={{ color: 'red', fontWeight: 700 }}>♥</span> by{' '}
         <a
           style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}
