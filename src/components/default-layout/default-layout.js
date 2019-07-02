@@ -14,7 +14,7 @@ class DefaultLayout extends React.Component {
       videoId: 'knW7-x7Y7RE',
       title: 'SƠN TÙNG M-TP | HÃY TRAO CHO ANH ft. Snoop Dogg | Official MV',
       author: 'Sơn Tùng M-TP Official',
-      viewCount: 23013472
+      viewCount: 0
     };
   }
 
