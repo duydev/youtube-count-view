@@ -14,7 +14,10 @@ class DefaultLayout extends React.Component {
       videoId: 'knW7-x7Y7RE',
       title: 'SƠN TÙNG M-TP | HÃY TRAO CHO ANH ft. Snoop Dogg | Official MV',
       author: 'Sơn Tùng M-TP Official',
-      viewCount: 0
+      viewCount: 0,
+      likeCount: 0,
+      dislikeCount: 0,
+      commentCount: 0
     };
   }
 
@@ -29,22 +32,25 @@ class DefaultLayout extends React.Component {
     });
   };
 
-  fetchCount = () => {
+  fetchMetric = () => {
     const videoId = this.state.videoId;
 
     fetchData(videoId).then(data => {
       this.setState({
-        viewCount: data.viewCount
+        viewCount: data.viewCount,
+        likeCount: data.likeCount,
+        dislikeCount: data.dislikeCount,
+        commentCount: data.commentCount
       });
     });
   };
 
   componentDidMount() {
     this.fetchInfo();
-    this.fetchCount();
+    this.fetchMetric();
 
     this.intervalId = setInterval(() => {
-      this.fetchCount();
+      this.fetchMetric();
     }, 1000);
   }
 
@@ -69,6 +75,9 @@ class DefaultLayout extends React.Component {
                 title={this.state.title}
                 author={this.state.author}
                 viewCount={this.state.viewCount}
+                likeCount={this.state.likeCount}
+                dislikeCount={this.state.dislikeCount}
+                commentCount={this.state.commentCount}
               />
             </Grid>
           </Grid>
