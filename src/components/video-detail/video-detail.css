@@ -1,3 +1,15 @@
 .wrapper {
   margin-top: 2em;
 }
+
+.refresh-clock-wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.refresh-clock {
+  padding: 1em;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}

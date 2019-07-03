@@ -7,7 +7,7 @@ import { Footer } from './components/footer/footer';
 export const App = props => {
   return (
     <Fragment>
-      <VideoDetail videoId="knW7-x7Y7RE" />
+      <VideoDetail videoId="knW7-x7Y7RE" refreshTime={2000} />
       <Footer />
     </Fragment>
   );

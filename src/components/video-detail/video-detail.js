@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Card, Grid } from '@material-ui/core';
+import { Container, Card, Grid, CircularProgress } from '@material-ui/core';
 
 import { Thumbnail } from '../thumbnail';
 import { VideoStatistics } from '../video-statistics';
@@ -47,7 +47,7 @@ class VideoDetail extends React.Component {
         commentCount: data.commentCount
       });
 
-      setTimeout(this.fetchMetric, 2000);
+      setTimeout(this.fetchMetric, this.props.refreshTime || 2000);
     });
   };
 
@@ -86,6 +86,9 @@ class VideoDetail extends React.Component {
               />
             </Grid>
           </Grid>
+          <div className="refresh-clock-wrapper">
+            <CircularProgress value={80} className="refresh-clock" size={25} />
+          </div>
         </Card>
       </Container>
     );
@@ -93,7 +96,8 @@ class VideoDetail extends React.Component {
 }
 
 VideoDetail.propTypes = {
-  videoId: PropTypes.string.isRequired
+  videoId: PropTypes.string.isRequired,
+  refreshTime: PropTypes.number.isRequired
 };
 
 export { VideoDetail };
