@@ -19,3 +19,7 @@ export const getImageUrl = (videoId, sizeName) => {
       return 'https://i.ytimg.com/vi/' + videoId + '/sddefault.jpg';
   }
 };
+
+export const getVideoIdFromURL = url => {
+  return null;
+};
