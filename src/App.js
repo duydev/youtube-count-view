@@ -6,6 +6,8 @@ import { Footer } from './components/footer/footer';
 import { SearchBar } from './components/search-bar';
 import { Snackbar, SnackbarContent, Icon, IconButton } from '@material-ui/core';
 
+import './app.css';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
