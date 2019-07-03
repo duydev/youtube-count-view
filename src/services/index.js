@@ -13,6 +13,8 @@ export const fetchData = (videoId = 'knW7-x7Y7RE') => {
   }).then(response => {
     const data = response.data.items[0];
 
+    if (!data) throw Error('Load data failed!');
+
     return {
       title: data.snippet.title,
       author: data.snippet.channelTitle,

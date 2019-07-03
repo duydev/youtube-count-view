@@ -21,6 +21,12 @@ class App extends React.Component {
     });
   };
 
+  handleFetchDataError = err => {
+    this.setState({
+      videoId: 'knW7-x7Y7RE'
+    });
+  };
+
   render() {
     return (
       <Fragment>
@@ -31,6 +37,7 @@ class App extends React.Component {
         <VideoDetail
           videoId={this.state.videoId}
           refreshTime={this.state.refreshTime}
+          onError={err => this.handleFetchDataError(err)}
         />
         <Footer />
       </Fragment>

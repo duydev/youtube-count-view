@@ -29,7 +29,8 @@ export const getVideoIdFromURL = url => {
     id = url[2].split(/[^0-9a-z_-]/i);
     id = id[0];
   } else {
-    id = url;
+    id = url[0];
   }
+
   return id;
 };

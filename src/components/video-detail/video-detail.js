@@ -28,27 +28,35 @@ class VideoDetail extends React.Component {
   }
 
   fetchInfo = () => {
-    fetchData(this.props.videoId).then(data => {
-      this.setState({
-        title: data.title,
-        author: data.author
+    fetchData(this.props.videoId)
+      .then(data => {
+        this.setState({
+          title: data.title,
+          author: data.author
+        });
+      })
+      .catch(err => {
+        this.props.onError(err);
       });
-    });
   };
 
   fetchMetric = () => {
     if (!this.allowFetchData) return;
 
-    fetchData(this.props.videoId).then(data => {
-      this.setState({
-        viewCount: data.viewCount,
-        likeCount: data.likeCount,
-        dislikeCount: data.dislikeCount,
-        commentCount: data.commentCount
-      });
+    fetchData(this.props.videoId)
+      .then(data => {
+        this.setState({
+          viewCount: data.viewCount,
+          likeCount: data.likeCount,
+          dislikeCount: data.dislikeCount,
+          commentCount: data.commentCount
+        });
 
-      setTimeout(this.fetchMetric, this.props.refreshTime || 2000);
-    });
+        setTimeout(this.fetchMetric, this.props.refreshTime || 2000);
+      })
+      .catch(err => {
+        this.props.onError(err);
+      });
   };
 
   componentDidMount() {
@@ -64,7 +72,6 @@ class VideoDetail extends React.Component {
     if (this.props.videoId !== prevProps.videoId) {
       this.fetchInfo();
       this.fetchMetric();
-      console.log('Load new video');
     }
   }
 
@@ -105,7 +112,8 @@ class VideoDetail extends React.Component {
 
 VideoDetail.propTypes = {
   videoId: PropTypes.string.isRequired,
-  refreshTime: PropTypes.number.isRequired
+  refreshTime: PropTypes.number.isRequired,
+  onError: PropTypes.func.isRequired
 };
 
 export { VideoDetail };
