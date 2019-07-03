@@ -7,9 +7,10 @@ import { VideoStatistics } from '../video-statistics';
 import { VideoTitle } from '../video-title';
 
 import { fetchData } from '../../services';
-import { getVideoViewURL, getImageUrl } from '../../helpers';
+import { getVideoViewURL, getImageUrl, getVideoEmbedURL } from '../../helpers';
 
 import './video-detail.css';
+import { EmbedVideo } from '../embed-video';
 
 class VideoDetail extends React.Component {
   constructor(props) {
@@ -86,10 +87,14 @@ class VideoDetail extends React.Component {
           />
           <Grid container>
             <Grid item md={6} xs={12}>
-              <Thumbnail
+              {/* <Thumbnail
                 title={this.state.title}
                 image={getImageUrl(this.props.videoId)}
                 url={getVideoViewURL(this.props.videoId)}
+              /> */}
+              <EmbedVideo
+                title={this.state.title}
+                url={getVideoEmbedURL(this.props.videoId)}
               />
             </Grid>
             <Grid item md={6} xs={12}>

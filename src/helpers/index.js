@@ -34,3 +34,7 @@ export const getVideoIdFromURL = url => {
 
   return id;
 };
+
+export const getVideoEmbedURL = videoId => {
+  return 'https://www.youtube.com/embed/' + videoId;
+};
