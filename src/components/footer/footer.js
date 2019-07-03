@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from 'react';
+import './footer.css';
 
 export const Footer = props => {
   return (
