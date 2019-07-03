@@ -70,14 +70,14 @@ class VideoDetail extends React.Component {
             url={getVideoViewURL(this.props.videoId)}
           />
           <Grid container>
-            <Grid item md={6}>
+            <Grid item md={6} xs={12}>
               <Thumbnail
                 title={this.state.title}
                 image={getImageUrl(this.props.videoId)}
                 url={getVideoViewURL(this.props.videoId)}
               />
             </Grid>
-            <Grid item md={6}>
+            <Grid item md={6} xs={12}>
               <VideoStatistics
                 viewCount={this.state.viewCount}
                 likeCount={this.state.likeCount}
