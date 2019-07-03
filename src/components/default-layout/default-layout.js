@@ -10,6 +10,8 @@ class DefaultLayout extends React.Component {
   constructor(props) {
     super(props);
 
+    this.allowFetchData = true;
+
     this.state = {
       videoId: 'knW7-x7Y7RE',
       title: 'SƠN TÙNG M-TP | HÃY TRAO CHO ANH ft. Snoop Dogg | Official MV',
@@ -35,6 +37,8 @@ class DefaultLayout extends React.Component {
   fetchMetric = () => {
     const videoId = this.state.videoId;
 
+    if (!this.allowFetchData) return;
+
     fetchData(videoId).then(data => {
       this.setState({
         viewCount: data.viewCount,
@@ -42,20 +46,18 @@ class DefaultLayout extends React.Component {
         dislikeCount: data.dislikeCount,
         commentCount: data.commentCount
       });
+
+      setTimeout(this.fetchMetric, 2000);
     });
   };
 
   componentDidMount() {
     this.fetchInfo();
     this.fetchMetric();
-
-    this.intervalId = setInterval(() => {
-      this.fetchMetric();
-    }, 2000);
   }
 
   componentWillUnmount() {
-    clearInterval(this.intervalId);
+    this.allowFetchData = false;
   }
 
   render() {

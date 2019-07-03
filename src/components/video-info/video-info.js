@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './video-info.css';
+import { Icon } from '@material-ui/core';
 
 const VideoInfo = ({
   videoId,
@@ -19,25 +20,33 @@ const VideoInfo = ({
         <a href={url}>{title || 'Video Title'}</a>
       </h1>
       <h2>{author || 'Author'}</h2>
-      <div className="view-count-title">View Count</div>
+      <div className="view-count-title">
+        _ <Icon>remove_red_eye</Icon> view_
+      </div>
       <div className="counter-wrapper">
         <div id="odometer" className="odometer">
           {viewCount}
         </div>
       </div>
-      <div className="view-count-title">Like Count</div>
+      <div className="view-count-title">
+        _<Icon>thumb_up</Icon> like_
+      </div>
       <div className="counter-wrapper">
         <div id="odometer" className="odometer">
           {likeCount}
         </div>
       </div>
-      <div className="view-count-title">Dislike Count</div>
+      <div className="view-count-title">
+        _<Icon>thumb_down</Icon> dislike_
+      </div>
       <div className="counter-wrapper">
         <div id="odometer" className="odometer">
           {dislikeCount}
         </div>
       </div>
-      <div className="view-count-title">Comment Count</div>
+      <div className="view-count-title">
+        _<Icon>comment</Icon> comment_
+      </div>
       <div className="counter-wrapper">
         <div id="odometer" className="odometer">
           {commentCount}

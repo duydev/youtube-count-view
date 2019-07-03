@@ -10,11 +10,11 @@
 
 .counter-wrapper {
   text-align: center;
-  margin: 1.4em 0;
+  margin-bottom: 1.4em;
 }
 
 .odometer {
-  font-size: 3em;
+  font-size: 2em;
 }
 
 h1 {
