@@ -1,9 +1,12 @@
+.video-statistics {
+  margin-top: -10px;
+}
+
 .video-info {
   margin: 0 1.3em;
 }
 
 .view-count-title {
-  padding-top: 0.1em;
   font-size: 2em;
   text-align: center;
 }
