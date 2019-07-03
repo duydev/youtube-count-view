@@ -3,23 +3,27 @@ import { InputBase, IconButton, Icon, Paper } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import './search-bar.css';
 
+import { getVideoIdFromURL } from '../../helpers';
+
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      value: this.props.value
+      videoId: this.props.value,
+      url: ''
     };
   }
 
   onInputChange = value => {
     this.setState({
-      value
+      videoId: getVideoIdFromURL(value),
+      url: value
     });
   };
 
   onButtonClick = () => {
-    this.props.onSubmit(this.state.value);
+    this.props.onSubmit(this.state.videoId);
   };
 
   render() {
@@ -27,9 +31,9 @@ class SearchBar extends React.Component {
       <Paper className="search-bar-wrapper">
         <InputBase
           className="search-bar-input"
-          placeholder="Video Id"
-          inputProps={{ 'aria-label': 'Video Id' }}
-          value={this.state.value}
+          placeholder="Youtube Video URL"
+          inputProps={{ 'aria-label': 'Youtube Video URL' }}
+          value={this.state.url}
           onChange={e => this.onInputChange(e.target.value)}
         />
         <IconButton aria-label="Surf" onClick={e => this.onButtonClick(e)}>
