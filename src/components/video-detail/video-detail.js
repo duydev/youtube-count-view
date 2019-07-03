@@ -60,6 +60,14 @@ class VideoDetail extends React.Component {
     this.allowFetchData = false;
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.videoId !== prevProps.videoId) {
+      this.fetchInfo();
+      this.fetchMetric();
+      console.log('Load new video');
+    }
+  }
+
   render() {
     return (
       <Container className="wrapper">
