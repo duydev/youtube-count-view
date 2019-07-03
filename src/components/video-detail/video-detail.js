@@ -1,15 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { CircularProgress, Paper, Container } from '@material-ui/core';
-
 import { VideoStatistics } from '../video-statistics';
 import { VideoTitle } from '../video-title';
-
+import { EmbedVideo } from '../embed-video';
+import { Notify } from '../notify';
 import { fetchData } from '../../services';
 import { getVideoViewURL, getVideoEmbedURL } from '../../helpers';
-
 import './video-detail.css';
-import { EmbedVideo } from '../embed-video';
 
 class VideoDetail extends React.Component {
   constructor(props) {
@@ -18,6 +16,8 @@ class VideoDetail extends React.Component {
     this.allowFetchData = true;
 
     this.state = {
+      isError: false,
+      error: null,
       title: 'Video Title',
       author: 'Author',
       viewCount: 0,
@@ -36,7 +36,10 @@ class VideoDetail extends React.Component {
         });
       })
       .catch(err => {
-        this.props.onError(err);
+        this.setState({
+          isError: true,
+          error: err
+        });
       });
   };
 
@@ -55,7 +58,10 @@ class VideoDetail extends React.Component {
         setTimeout(this.fetchMetric, this.props.refreshTime || 2000);
       })
       .catch(err => {
-        this.props.onError(err);
+        this.setState({
+          isError: true,
+          error: err
+        });
       });
   };
 
@@ -75,39 +81,52 @@ class VideoDetail extends React.Component {
     }
   }
 
+  handleCloseNotify = () => {
+    this.setState({
+      isError: false,
+      error: null
+    });
+  };
+
   render() {
     return (
-      <Paper>
-        <Container>
-          <VideoTitle
-            title={this.state.title}
-            author={this.state.author}
-            url={getVideoViewURL(this.props.videoId)}
-          />
-          <EmbedVideo
-            title={this.state.title}
-            url={getVideoEmbedURL(this.props.videoId)}
-          />
-          <VideoStatistics
-            viewCount={this.state.viewCount}
-            likeCount={this.state.likeCount}
-            dislikeCount={this.state.dislikeCount}
-            commentCount={this.state.commentCount}
-          />
-        </Container>
+      <Fragment>
+        <Paper>
+          <Container>
+            <VideoTitle
+              title={this.state.title}
+              author={this.state.author}
+              url={getVideoViewURL(this.props.videoId)}
+            />
+            <EmbedVideo
+              title={this.state.title}
+              url={getVideoEmbedURL(this.props.videoId)}
+            />
+            <VideoStatistics
+              viewCount={this.state.viewCount}
+              likeCount={this.state.likeCount}
+              dislikeCount={this.state.dislikeCount}
+              commentCount={this.state.commentCount}
+            />
+          </Container>
 
-        <div className="refresh-clock-wrapper">
-          <CircularProgress value={80} className="refresh-clock" size={25} />
-        </div>
-      </Paper>
+          <div className="refresh-clock-wrapper">
+            <CircularProgress value={80} className="refresh-clock" size={25} />
+          </div>
+        </Paper>
+        <Notify
+          message="Video not found!"
+          display={this.state.isError}
+          onClose={this.handleCloseNotify}
+        />
+      </Fragment>
     );
   }
 }
 
 VideoDetail.propTypes = {
   videoId: PropTypes.string.isRequired,
-  refreshTime: PropTypes.number.isRequired,
-  onError: PropTypes.func.isRequired
+  refreshTime: PropTypes.number
 };
 
 export { VideoDetail };

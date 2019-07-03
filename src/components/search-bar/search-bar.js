@@ -6,30 +6,44 @@ import {
   Paper,
   Container
 } from '@material-ui/core';
-import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import './search-bar.css';
 
-import { getVideoIdFromURL } from '../../helpers';
+import { getVideoIdFromSearchValue } from '../../helpers';
 
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
 
+    let path = props.location.pathname;
+    path = path.split('/');
+    path = path[path.length - 1];
+
+    const videoId = path || '';
+
     this.state = {
-      videoId: this.props.value,
-      url: ''
+      videoId
     };
   }
 
   onInputChange = value => {
     this.setState({
-      videoId: getVideoIdFromURL(value),
-      url: value
+      videoId: getVideoIdFromSearchValue(value)
     });
   };
 
-  onButtonClick = () => {
-    this.props.onSubmit(this.state.videoId);
+  handleSubmit = () => {
+    this.props.history.push('/video/' + this.state.videoId);
+  };
+
+  handleButtonClick = e => {
+    this.handleSubmit(e);
+  };
+
+  handleKeyDown = e => {
+    if (e.keyCode === 13) {
+      this.handleSubmit(e);
+    }
   };
 
   render() {
@@ -38,12 +52,18 @@ class SearchBar extends React.Component {
         <Paper className="search-bar-wrapper">
           <InputBase
             className="search-bar-input"
-            placeholder="Youtube Video URL"
-            inputProps={{ 'aria-label': 'Youtube Video URL' }}
-            value={this.state.url}
+            placeholder="Youtube Video ID or URL"
+            inputProps={{
+              'aria-label': 'Youtube Video ID or Youtube Video URL'
+            }}
+            value={this.state.videoId}
             onChange={e => this.onInputChange(e.target.value)}
           />
-          <IconButton aria-label="Surf" onClick={e => this.onButtonClick(e)}>
+          <IconButton
+            aria-label="Surf"
+            onClick={this.handleButtonClick}
+            onKeyDown={this.handleKeyDown}
+          >
             <Icon>search</Icon>
           </IconButton>
         </Paper>
@@ -52,9 +72,6 @@ class SearchBar extends React.Component {
   }
 }
 
-SearchBar.propTypes = {
-  value: PropTypes.string,
-  onSubmit: PropTypes.func.isRequired
-};
+const SearchBarWithRouter = withRouter(SearchBar);
 
-export { SearchBar };
+export { SearchBarWithRouter as SearchBar };

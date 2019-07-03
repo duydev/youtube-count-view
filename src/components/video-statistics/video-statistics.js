@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './video-statistics.css';
 import { Icon, Grid } from '@material-ui/core';
+import Odometer from 'react-odometerjs';
 
 const VideoStatistics = ({
   viewCount,
@@ -18,9 +19,7 @@ const VideoStatistics = ({
             _ <Icon>remove_red_eye</Icon> view_
           </div>
           <div className="counter-wrapper">
-            <div id="odometer" className="odometer">
-              {viewCount}
-            </div>
+            <Odometer value={viewCount} />
           </div>
         </Grid>
         <Grid item md={6} sm={6} xs={12}>
@@ -28,9 +27,7 @@ const VideoStatistics = ({
             _<Icon>thumb_up</Icon> like_
           </div>
           <div className="counter-wrapper">
-            <div id="odometer" className="odometer">
-              {likeCount}
-            </div>
+            <Odometer value={likeCount} />
           </div>
         </Grid>
         <Grid item md={6} sm={6} xs={12}>
@@ -38,9 +35,7 @@ const VideoStatistics = ({
             _<Icon>thumb_down</Icon> dislike_
           </div>
           <div className="counter-wrapper">
-            <div id="odometer" className="odometer">
-              {dislikeCount}
-            </div>
+            <Odometer value={dislikeCount} />
           </div>
         </Grid>
         <Grid item md={6} sm={6} xs={12}>
@@ -48,9 +43,7 @@ const VideoStatistics = ({
             _<Icon>comment</Icon> comment_
           </div>
           <div className="counter-wrapper">
-            <div id="odometer" className="odometer">
-              {commentCount}
-            </div>
+            <Odometer value={commentCount} />
           </div>
         </Grid>
       </Grid>

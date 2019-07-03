@@ -20,9 +20,10 @@ export const getImageUrl = (videoId, sizeName) => {
   }
 };
 
-export const getVideoIdFromURL = url => {
-  var id = '';
-  url = url
+export const getVideoIdFromSearchValue = value => {
+  var id = value;
+
+  const url = value
     .replace(/(>|<)/gi, '')
     .split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
   if (url[2] !== undefined) {
