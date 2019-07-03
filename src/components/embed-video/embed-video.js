@@ -8,9 +8,9 @@ const EmbedVideo = ({ url, title }) => {
       <iframe
         title={title}
         src={url}
-        frameborder="0"
+        frameBorder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
+        allowFullScreen
       />
     </div>
   );
