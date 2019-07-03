@@ -1,18 +1,40 @@
 .video-title {
-  margin: 1em;
+  padding: 15px 0;
 }
 
 .video-title h1 {
   color: blue;
   font-size: 28px;
   text-align: center;
+  margin: 0;
 }
 
 .video-title h2 {
   font-size: 20px;
+  margin: 0;
 }
 
 .video-title h1 a {
   text-decoration: none;
   color: inherit;
+}
+
+@media only screen and (max-width: 600px) {
+  .video-title h1 {
+    font-size: 20px;
+  }
+
+  .video-title h2 {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .video-title h1 {
+    font-size: 18px;
+  }
+
+  .video-title h2 {
+    font-size: 14px;
+  }
 }

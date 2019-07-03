@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Card, Grid, CircularProgress } from '@material-ui/core';
+import { CircularProgress, Paper, Container } from '@material-ui/core';
 
-import { Thumbnail } from '../thumbnail';
 import { VideoStatistics } from '../video-statistics';
 import { VideoTitle } from '../video-title';
 
 import { fetchData } from '../../services';
-import { getVideoViewURL, getImageUrl, getVideoEmbedURL } from '../../helpers';
+import { getVideoViewURL, getVideoEmbedURL } from '../../helpers';
 
 import './video-detail.css';
 import { EmbedVideo } from '../embed-video';
@@ -78,39 +77,29 @@ class VideoDetail extends React.Component {
 
   render() {
     return (
-      <Container className="wrapper">
-        <Card>
+      <Paper>
+        <Container>
           <VideoTitle
             title={this.state.title}
             author={this.state.author}
             url={getVideoViewURL(this.props.videoId)}
           />
-          <Grid container>
-            <Grid item md={6} xs={12}>
-              {/* <Thumbnail
-                title={this.state.title}
-                image={getImageUrl(this.props.videoId)}
-                url={getVideoViewURL(this.props.videoId)}
-              /> */}
-              <EmbedVideo
-                title={this.state.title}
-                url={getVideoEmbedURL(this.props.videoId)}
-              />
-            </Grid>
-            <Grid item md={6} xs={12}>
-              <VideoStatistics
-                viewCount={this.state.viewCount}
-                likeCount={this.state.likeCount}
-                dislikeCount={this.state.dislikeCount}
-                commentCount={this.state.commentCount}
-              />
-            </Grid>
-          </Grid>
-          <div className="refresh-clock-wrapper">
-            <CircularProgress value={80} className="refresh-clock" size={25} />
-          </div>
-        </Card>
-      </Container>
+          <EmbedVideo
+            title={this.state.title}
+            url={getVideoEmbedURL(this.props.videoId)}
+          />
+          <VideoStatistics
+            viewCount={this.state.viewCount}
+            likeCount={this.state.likeCount}
+            dislikeCount={this.state.dislikeCount}
+            commentCount={this.state.commentCount}
+          />
+        </Container>
+
+        <div className="refresh-clock-wrapper">
+          <CircularProgress value={80} className="refresh-clock" size={25} />
+        </div>
+      </Paper>
     );
   }
 }

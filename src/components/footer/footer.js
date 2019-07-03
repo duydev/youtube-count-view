@@ -3,7 +3,7 @@ import React from 'react';
 
 export const Footer = props => {
   return (
-    <div className="footer" style={{ textAlign: 'center', padding: '1em' }}>
+    <div className="footer" style={{ textAlign: 'center' }}>
       &copy; {new Date().getFullYear()} - Made with{' '}
       <span style={{ color: 'red', fontWeight: 700 }}>♥</span> by{' '}
       <a

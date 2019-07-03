@@ -1,5 +1,11 @@
 import React from 'react';
-import { InputBase, IconButton, Icon, Paper } from '@material-ui/core';
+import {
+  InputBase,
+  IconButton,
+  Icon,
+  Paper,
+  Container
+} from '@material-ui/core';
 import PropTypes from 'prop-types';
 import './search-bar.css';
 
@@ -28,18 +34,20 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <Paper className="search-bar-wrapper">
-        <InputBase
-          className="search-bar-input"
-          placeholder="Youtube Video URL"
-          inputProps={{ 'aria-label': 'Youtube Video URL' }}
-          value={this.state.url}
-          onChange={e => this.onInputChange(e.target.value)}
-        />
-        <IconButton aria-label="Surf" onClick={e => this.onButtonClick(e)}>
-          <Icon>search</Icon>
-        </IconButton>
-      </Paper>
+      <Container style={{ margin: '15px 0' }}>
+        <Paper className="search-bar-wrapper">
+          <InputBase
+            className="search-bar-input"
+            placeholder="Youtube Video URL"
+            inputProps={{ 'aria-label': 'Youtube Video URL' }}
+            value={this.state.url}
+            onChange={e => this.onInputChange(e.target.value)}
+          />
+          <IconButton aria-label="Surf" onClick={e => this.onButtonClick(e)}>
+            <Icon>search</Icon>
+          </IconButton>
+        </Paper>
+      </Container>
     );
   }
 }
