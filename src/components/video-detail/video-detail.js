@@ -1,21 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Container, Card, Grid } from '@material-ui/core';
+
 import { Thumbnail } from '../thumbnail';
-import { VideoInfo } from '../video-info';
-import './default-layout.css';
+import { VideoStatistics } from '../video-statistics';
+import { VideoTitle } from '../video-title';
 
 import { fetchData } from '../../services';
+import { getVideoViewURL, getImageUrl } from '../../helpers';
 
-class DefaultLayout extends React.Component {
+import './video-detail.css';
+
+class VideoDetail extends React.Component {
   constructor(props) {
     super(props);
 
     this.allowFetchData = true;
 
     this.state = {
-      videoId: 'knW7-x7Y7RE',
-      title: 'SƠN TÙNG M-TP | HÃY TRAO CHO ANH ft. Snoop Dogg | Official MV',
-      author: 'Sơn Tùng M-TP Official',
+      title: 'Video Title',
+      author: 'Author',
       viewCount: 0,
       likeCount: 0,
       dislikeCount: 0,
@@ -24,9 +28,7 @@ class DefaultLayout extends React.Component {
   }
 
   fetchInfo = () => {
-    const videoId = this.state.videoId;
-
-    fetchData(videoId).then(data => {
+    fetchData(this.props.videoId).then(data => {
       this.setState({
         title: data.title,
         author: data.author
@@ -35,11 +37,9 @@ class DefaultLayout extends React.Component {
   };
 
   fetchMetric = () => {
-    const videoId = this.state.videoId;
-
     if (!this.allowFetchData) return;
 
-    fetchData(videoId).then(data => {
+    fetchData(this.props.videoId).then(data => {
       this.setState({
         viewCount: data.viewCount,
         likeCount: data.likeCount,
@@ -64,18 +64,21 @@ class DefaultLayout extends React.Component {
     return (
       <Container className="wrapper">
         <Card>
+          <VideoTitle
+            title={this.state.title}
+            author={this.state.author}
+            url={getVideoViewURL(this.props.videoId)}
+          />
           <Grid container>
             <Grid item md={6}>
               <Thumbnail
                 title={this.state.title}
-                videoId={this.state.videoId}
+                image={getImageUrl(this.props.videoId)}
+                url={getVideoViewURL(this.props.videoId)}
               />
             </Grid>
             <Grid item md={6}>
-              <VideoInfo
-                videoId={this.state.videoId}
-                title={this.state.title}
-                author={this.state.author}
+              <VideoStatistics
                 viewCount={this.state.viewCount}
                 likeCount={this.state.likeCount}
                 dislikeCount={this.state.dislikeCount}
@@ -89,4 +92,8 @@ class DefaultLayout extends React.Component {
   }
 }
 
-export { DefaultLayout };
+VideoDetail.propTypes = {
+  videoId: PropTypes.string.isRequired
+};
+
+export { VideoDetail };

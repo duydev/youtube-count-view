@@ -1,25 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './video-info.css';
+import './video-statistics.css';
 import { Icon } from '@material-ui/core';
 
-const VideoInfo = ({
-  videoId,
-  title,
-  author,
+const VideoStatistics = ({
   viewCount,
   likeCount,
   dislikeCount,
   commentCount
 }) => {
-  const url = 'https://www.youtube.com/watch?v=' + videoId;
-
   return (
-    <div className="video-info">
-      <h1>
-        <a href={url}>{title || 'Video Title'}</a>
-      </h1>
-      <h2>{author || 'Author'}</h2>
+    <div className="video-statistics">
       <div className="view-count-title">
         _ <Icon>remove_red_eye</Icon> view_
       </div>
@@ -56,14 +47,11 @@ const VideoInfo = ({
   );
 };
 
-VideoInfo.propTypes = {
-  videoId: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
+VideoStatistics.propTypes = {
   viewCount: PropTypes.number.isRequired,
   likeCount: PropTypes.number.isRequired,
   dislikeCount: PropTypes.number.isRequired,
   commentCount: PropTypes.number.isRequired
 };
 
-export { VideoInfo };
+export { VideoStatistics };
