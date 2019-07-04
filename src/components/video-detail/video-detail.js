@@ -102,19 +102,23 @@ class VideoDetail extends React.Component {
     if (this.props.location.pathname === '/') {
       stack.push(
         <Typography color="textPrimary" className="breadcrumbs-link">
-          <Icon className="breadcrumbs-icon">home</Icon>
+          <Icon className="breadcrumbs-icon" fontSize="small">
+            home
+          </Icon>
           Home
         </Typography>
       );
     } else {
       stack.push(
         <Link color="inherit" to="/" className="breadcrumbs-link">
-          <Icon className="breadcrumbs-icon">home</Icon>
+          <Icon className="breadcrumbs-icon" fontSize="small">
+            home
+          </Icon>
           Home
         </Link>
       );
       stack.push(
-        <Typography color="textPrimary" className="breadcrumbs-link">
+        <Typography color="textPrimary" className="breadcrumbs-text">
           {this.state.title}
         </Typography>
       );
