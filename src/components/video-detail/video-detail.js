@@ -1,6 +1,14 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { CircularProgress, Paper, Container } from '@material-ui/core';
+import {
+  CircularProgress,
+  Paper,
+  Container,
+  Breadcrumbs,
+  Typography,
+  Icon
+} from '@material-ui/core';
+import { Link, withRouter } from 'react-router-dom';
 import { VideoStatistics } from '../video-statistics';
 import { VideoTitle } from '../video-title';
 import { EmbedVideo } from '../embed-video';
@@ -88,10 +96,42 @@ class VideoDetail extends React.Component {
     });
   };
 
+  renderBreadcrumbs = () => {
+    const stack = [];
+
+    if (this.props.location.pathname === '/') {
+      stack.push(
+        <Typography color="textPrimary" className="breadcrumbs-link">
+          <Icon className="breadcrumbs-icon">home</Icon>
+          Home
+        </Typography>
+      );
+    } else {
+      stack.push(
+        <Link color="inherit" to="/" className="breadcrumbs-link">
+          <Icon className="breadcrumbs-icon">home</Icon>
+          Home
+        </Link>
+      );
+      stack.push(
+        <Typography color="textPrimary" className="breadcrumbs-link">
+          {this.state.title}
+        </Typography>
+      );
+    }
+
+    return (
+      <Breadcrumbs aria-label="Breadcrumb" className="breadcrumbs">
+        {stack}{' '}
+      </Breadcrumbs>
+    );
+  };
+
   render() {
     return (
       <Fragment>
         <Paper>
+          {this.renderBreadcrumbs()}
           <Container>
             <VideoTitle
               title={this.state.title}
@@ -129,4 +169,6 @@ VideoDetail.propTypes = {
   refreshTime: PropTypes.number
 };
 
-export { VideoDetail };
+const VideoDetailWithRouter = withRouter(VideoDetail);
+
+export { VideoDetailWithRouter as VideoDetail };

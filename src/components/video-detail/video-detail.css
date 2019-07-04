@@ -9,3 +9,17 @@
   left: 0;
   bottom: 0;
 }
+
+.breadcrumbs {
+  padding: 15px 10px 0;
+}
+
+.breadcrumbs-link {
+  display: flex;
+}
+
+.breadcrumbs-icon {
+  margin-right: 5px;
+  width: 20;
+  height: 20;
+}
