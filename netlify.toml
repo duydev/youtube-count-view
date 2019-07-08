@@ -1,0 +1,8 @@
+[build]
+  base = "."
+  publish = "./build"
+  command = "yarn build"
+
+[context.production]
+  publish = "./build"
+  command = "yarn build"
